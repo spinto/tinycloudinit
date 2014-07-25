@@ -126,7 +126,7 @@ for f in $CS*; do
       echo "ok!"
     }
 
-    awk 'BEGIN{FS=":|-"}{gsub(/^[ \t]+/,"",$1);gsub(/^[ \t]+/,"",$2);gsub(/^[ \t]+/,"",$3);if($1=="users"){u=1}if(u==1){if(ua!=""){if($1=="primary-group")ua=ua" -g \""$2"\"";if($1=="groups")ua=ua" -G \""$2"\"";if($1=="sudo")ua=ua" -S \""$2"\"";if($1=="passwd")ua=ua" -p \""$2"\"";if($1=="ssh"&&$2=="authorized"){while(1){getline;k=$0;gsub(/^[ \t]+-[ ]+/,"",k);if(k!~/^ssh-rsa/)break;ua=ua" -k \""k"\""}}}if($1==""&&$2=="name"){if(ua!=""){print "newuser "ua;}ua=$3;}}}END{if(ua!=""){print "newuser "ua;}}' /tmp/833817881.cinit | while read line; do
+    awk 'BEGIN{FS=":|-"}{gsub(/^[ \t]+/,"",$1);gsub(/^[ \t]+/,"",$2);gsub(/^[ \t]+/,"",$3);if($1=="users"){u=1}if(u==1){if(ua!=""){if($1=="primary-group")ua=ua" -g \""$2"\"";if($1=="groups")ua=ua" -G \""$2"\"";if($1=="sudo")ua=ua" -S \""$2"\"";if($1=="passwd")ua=ua" -p \""$2"\"";if($1=="ssh"&&$2=="authorized"){while(1){getline;k=$0;gsub(/^[ \t]+-[ ]+/,"",k);if(k!~/^ssh-rsa/)break;ua=ua" -k \""k"\""}}}if($1==""&&$2=="name"){if(ua!=""){print "newuser "ua;}ua=$3;}}}END{if(ua!=""){print "newuser "ua;}}' $f | while read line; do
       eval $line
     done
 
