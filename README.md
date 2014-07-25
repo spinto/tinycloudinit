@@ -1,9 +1,10 @@
+# tinycloudinit #
 Very Tiny cloud-init script for contextualization of small linux instances.
 
-Minimum requirements:
+## Minimum requirements:
  - Linux core utils (awk, head, bash or ash, wget, sed, adduser, addgroup, base64, blkid). Busybox supported.
 
-Supported cloud-init features:
+## Supported cloud-init features:
  - MIME Multipart
  - Base64 encode of userdata
  - OpenNebula datasource
@@ -21,8 +22,8 @@ Regarding #cloud-config support, commands supported are:
    - passwd
    - gecos
 
-Installation:
- On TinyCoreLinux:
+## Installation:
+### On TinyCoreLinux:
    - Install the software into the /opt/ directory, naming it tinycloudinit.sh
    - Add the software to the startup script
  echo /opt/tinycloudinit.sh >> /opt/bootlocal.sh
@@ -33,7 +34,7 @@ Installation:
    - (optional) Load the bash package for running bash scripts (as default, ash will be used)
  tce-load -wi bash
 
- On RHEL/CentOS/Init:
+### On RHEL/CentOS/Init:
    - Install the software as init.d script via
  
  wget -O /etc/init.d/tinycloudinit https://raw.githubusercontent.com/spinto/tinycloudinit/master/tinycloudinit.sh
